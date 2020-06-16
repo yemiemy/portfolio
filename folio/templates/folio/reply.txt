@@ -1,0 +1,11 @@
+Good day {{ name }}.
+
+Your message has been successfully received. 
+
+This is an automated response email. I will respond personally as soon as possible.
+
+Thank you for contacting me.
+
+Faithfully,
+Olaoluwayemi Rasheed.
+https://bit.ly/rasholayemidev

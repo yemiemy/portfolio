@@ -1,0 +1,93 @@
+{% extends 'folio/blog.html' %}
+{% load static %}
+{% load humanize %}
+    {% block content %}
+    <div class="intro intro-single route bg-image" style="background-image: url( {% static 'img/overlay-bg.jpg' %} )">
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h6 class="intro-title" style="font-size: 30px;">Recommend Olaoluwayemi</h6>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Recommend</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <!--/ Section Blog-Single Star /-->
+    <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'img/overlay-bg.jpg' %})">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="contact-mf">
+                <div id="contact" class="box-shadow-full">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="title-box-2">
+                        <h5 class="title-left">
+                          Recommend Me
+                        </h5>
+                      </div>
+                      <div>
+                          <form method="POST" role="form" enctype="multipart/form-data">
+                              {% csrf_token %}
+                          <div id="sendmessage">Your message has been sent. Thank you!</div>
+                          <div id="errormessage"></div>
+                          <div class="row">
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <small><i>Please upload a picture of yourself.</i></small>
+                                <input type="file" class="" name="image" id="image"  data-rule="file" data-msg="Please upload a valid image" />
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <textarea class="form-control" name="recommend" rows="5" maxlength="1495" data-rule="required" data-msg="Please write something for me" placeholder="Recommendation" required></textarea>
+                                <div class="validation"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <button type="submit" class="button button-a button-big button-rouded">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="title-box-2 pt-4 pt-md-0">
+                        <h5 class="title-left">
+                          Quick Info
+                        </h5>
+                      </div>
+                      <div class="more-info">
+                        <p class="lead">
+                         <b style="font-size: 17px;">What do I do with the information I get here?</b>  <br> 
+                         Your recommendation will be displayed on my landing page under the recommendation section. 
+                        <i style="font-size: 16px;"><strong>NOTE:</strong> your recommendation will not show immediately on the website.</i>
+                         <br><strong>Cheers!</strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--/ Section Blog-Single End /-->
+    <!--/ Section Contact-Footer Star /-->
+    {% endblock %}
+    

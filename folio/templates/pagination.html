@@ -1,0 +1,30 @@
+{% if is_paginated %}
+        <p style="text-align: center; font-size: 20px; margin-top: 10px; margin-bottom: 30px;">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">
+            <span class="badge badge-pill badge-info">
+                <i class="ion-ios-skipbackward-outline"></i>
+            </span>
+        </a>
+        <a href="?page={{page_obj.previous_page_number}}">
+            <span class="badge badge-pill badge-info">
+                <i class="ion-ios-rewind-outline"></i>
+            </span>
+        </a>
+        {% endif %}
+        
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <span class="badge badge-dark">{{num}}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}"><span class="badge badge-info">{{ num }}</span></a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}"><span class="badge badge-pill badge-info"><i class="ion-ios-fastforward-outline"></i></span></a> 
+        <a href="?page={{page_obj.paginator.num_pages}}"><span class="badge badge-pill badge-info"><i class="ion-ios-skipforward-outline"></i></span></a>
+        {% endif %}
+        </p>
+{% endif %}

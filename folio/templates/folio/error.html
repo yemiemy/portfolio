@@ -1,0 +1,68 @@
+{% extends 'folio/blog.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+  Error Message
+{% endblock title %}
+  
+    {% block content %}
+    <div class="intro intro-single route bg-image" style="background-image: url( {% static 'img/overlay-bg.jpg' %} )">
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h6 class="intro-title" style="font-size: 30px;">ERROR PAGE</h6>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Error</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <!--/ Section Blog-Single Star /-->
+    <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="margin-top: -100px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="contact-mf">
+                <div id="contact" class="box-shadow-full">
+                  <div class="row">
+                    <div class="col-md-8">
+                        <img src="{% static 'img/404-error.jpg' %}" alt="error-image" class="img-fluid">
+                    </div>
+                    <div class="col-md-4">
+                      <div class="title-box-2 pt-4 pt-md-0">
+                        <h5 class="title-left">
+                          Quick Info
+                        </h5>
+                      </div>
+                      <div class="more-info">
+                        <p class="lead">
+                         <b style="font-size: 17px;">{{e|truncatewords:10}}</b>  <br> 
+                         
+                        </p>
+                        <p class="lead" style="font-size: 15px;">
+                            You are seeing this page because you made a request to the server and the server could not process it. Please Try again.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--/ Section Blog-Single End /-->
+    <!--/ Section Contact-Footer Star /-->
+    {% endblock %}
+    
+    
+        
+
+                    <small>.You are seeing this error because you made a request and the server could not process it. Please try again</small>

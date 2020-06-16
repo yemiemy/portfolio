@@ -1,0 +1,107 @@
+﻿{% extends 'folio/blog.html' %}
+{% load static %}
+{% load humanize %}
+    {% block content %}
+    <div class="intro intro-single route bg-image" style="background-image: url( {% static 'img/overlay-bg.jpg' %} )">
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h2 class="intro-title mb-4">Search Results</h2>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Results</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Intro Skew End /-->
+    <!--/ Section Blog-Single Star /-->
+    <section class="blog-wrapper sect-pt4" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                <!--/ Section Blog Star /-->
+                    <div class="row">
+                        {% if posts %}
+                    {% for post in posts %}
+                        <div class="col-md-6">
+                        <div class="card card-blog">
+                            {% if post.image %}
+                            <div class="card-img">
+                            <a href="{{ post.image.url }}"><img src="{{ post.image.url }}" alt="" class="img-fluid" width="1000" height="666"></a>
+                            </div>
+                            {% endif %}
+                            <div class="card-body">
+                            <div class="card-category-box">
+                                <div class="card-category">
+                                <h6 class="category">{{ post.tag }}</h6>
+                                </div>
+                            </div>
+                            <h3 class="card-title"><a href="{% url 'single' post.id %}">{{post.title}}</a></h3>
+                            <p class="card-description">
+                                {{ post.body|truncatewords:25|safe }}...
+                            </p>
+                            </div>
+                            <div class="card-footer">
+                            <div class="post-author">
+                                <a href="#">
+                                <img src=" {% static 'img/avatar.jpg' %} " alt="" class="avatar rounded-circle">
+                                <span class="author">{{ post.author.first_name }}</span>
+                                </a>
+                            </div>
+                            <div class="post-date">
+                                <span class="ion-ios-clock-outline"></span> {{ post.published|naturaltime }}
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <p>There are no posts yet!</p>
+                        {% endif %}
+                    </div>
+                <!--/ Section Blog End /-->
+
+                </div>
+                <div class="col-md-4">
+                    <div class="widget-sidebar sidebar-search">
+                        <h5 class="sidebar-title">Search</h5>
+                        <div class="sidebar-content">
+                            <form action="{% url 'search' %}" method="GET">
+                                <div class="input-group">
+                                    <input type="text" name="query" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary btn-search" type="submit">
+                                            <span class="ion-android-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="widget-sidebar widget-tags">
+                        <h5 class="sidebar-title">Tags</h5>
+                        <div class="sidebar-content">
+                            <ul>
+                                {% for object in tags %}
+                                <li>
+                                    <a href="{% url 'tag' object.name %}">{{object.name}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Section Blog-Single End /-->
+    <!--/ Section Contact-Footer Star /-->
+    {% endblock %}
+    
